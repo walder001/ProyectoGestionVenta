@@ -115,8 +115,9 @@ create table detalle_venta(
 create table Proveedor(
         proveedorId integer primary key identity,
         correo varchar(30) not null,
+		articuloId integer not null,
         representante varchar(20) not null,
         direcion varchar(30) not null,
         contactos varchar(20) not null,
-        FOREIGN KEY (productoId) REFERENCES prodcuto (productoId)
+        FOREIGN KEY (articuloId) REFERENCES articulo (articuloId)
 );
