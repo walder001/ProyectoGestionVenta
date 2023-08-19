@@ -111,3 +111,12 @@ create table detalle_venta(
        FOREIGN KEY (ventaId) REFERENCES venta (ventaId) ON DELETE CASCADE,
        FOREIGN KEY (articuloId) REFERENCES articulo (articuloId)
 );
+--Tabla Proveedor
+create table Proveedor(
+        proveedorId integer primary key identity,
+        correo varchar(30) not null,
+        representante varchar(20) not null,
+        direcion varchar(30) not null,
+        contactos varchar(20) not null,
+        FOREIGN KEY (productoId) REFERENCES prodcuto (productoId)
+);
