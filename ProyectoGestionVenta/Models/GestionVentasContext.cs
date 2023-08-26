@@ -22,26 +22,26 @@ namespace ProyectoGestionVenta.Models
         public virtual DbSet<DetalleVentum> DetalleVenta { get; set; } = null!;
         public virtual DbSet<Ingreso> Ingresos { get; set; } = null!;
         public virtual DbSet<Persona> Personas { get; set; } = null!;
+        public virtual DbSet<Proveedor> Proveedors { get; set; } = null!;
         public virtual DbSet<Rol> Rols { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
         public virtual DbSet<Ventum> Venta { get; set; } = null!;
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    //if (!optionsBuilder.IsConfigured)
-        //    //{
-        //    //    optionsBuilder.UseSqlServer("Name=ConnectionStrings:dev");
-        //    //}
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Name=ConnectionStrings:dev");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
             modelBuilder.Entity<Articulo>(entity =>
             {
                 entity.ToTable("articulo");
 
-                entity.HasIndex(e => e.Nombre, "UQ__articulo__72AFBCC69AC85533")
+                entity.HasIndex(e => e.Nombre, "UQ__articulo__72AFBCC63382FC1A")
                     .IsUnique();
 
                 entity.Property(e => e.ArticuloId).HasColumnName("articuloId");
@@ -77,17 +77,17 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Articulos)
                     .HasForeignKey(d => d.CategoriaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__articulo__catego__5812160E");
+                    .HasConstraintName("FK__articulo__catego__44FF419A");
             });
 
             modelBuilder.Entity<Categorium>(entity =>
             {
                 entity.HasKey(e => e.CategoriaId)
-                    .HasName("PK__categori__6378C0C005A95A44");
+                    .HasName("PK__categori__6378C0C0ACE7CF8B");
 
                 entity.ToTable("categoria");
 
-                entity.HasIndex(e => e.Nombre, "UQ__categori__72AFBCC649B806D7")
+                entity.HasIndex(e => e.Nombre, "UQ__categori__72AFBCC6DBB548D8")
                     .IsUnique();
 
                 entity.Property(e => e.CategoriaId).HasColumnName("categoriaId");
@@ -127,18 +127,18 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.DetalleIngresos)
                     .HasForeignKey(d => d.ArticuloId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__detalle_i__artic__5FB337D6");
+                    .HasConstraintName("FK__detalle_i__artic__4CA06362");
 
                 entity.HasOne(d => d.Ingreso)
                     .WithMany(p => p.DetalleIngresos)
                     .HasForeignKey(d => d.IngresoId)
-                    .HasConstraintName("FK__detalle_i__ingre__5EBF139D");
+                    .HasConstraintName("FK__detalle_i__ingre__4BAC3F29");
             });
 
             modelBuilder.Entity<DetalleVentum>(entity =>
             {
                 entity.HasKey(e => e.DetalleVentaId)
-                    .HasName("PK__detalle___000CCCF7C00A9670");
+                    .HasName("PK__detalle___000CCCF79DC2EC46");
 
                 entity.ToTable("detalle_venta");
 
@@ -162,12 +162,12 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.DetalleVenta)
                     .HasForeignKey(d => d.ArticuloId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__detalle_v__artic__6754599E");
+                    .HasConstraintName("FK__detalle_v__artic__5441852A");
 
                 entity.HasOne(d => d.Venta)
                     .WithMany(p => p.DetalleVenta)
                     .HasForeignKey(d => d.VentaId)
-                    .HasConstraintName("FK__detalle_v__venta__66603565");
+                    .HasConstraintName("FK__detalle_v__venta__534D60F1");
             });
 
             modelBuilder.Entity<Ingreso>(entity =>
@@ -216,13 +216,13 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Ingresos)
                     .HasForeignKey(d => d.ProveedorId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ingreso__proveed__5AEE82B9");
+                    .HasConstraintName("FK__ingreso__proveed__47DBAE45");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Ingresos)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ingreso__usuario__5BE2A6F2");
+                    .HasConstraintName("FK__ingreso__usuario__48CFD27E");
             });
 
             modelBuilder.Entity<Persona>(entity =>
@@ -265,6 +265,41 @@ namespace ProyectoGestionVenta.Models
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("tipo_persona");
+            });
+
+            modelBuilder.Entity<Proveedor>(entity =>
+            {
+                entity.ToTable("Proveedor");
+
+                entity.Property(e => e.ProveedorId).HasColumnName("proveedorId");
+
+                entity.Property(e => e.ArticuloId).HasColumnName("articuloId");
+
+                entity.Property(e => e.Contactos)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("contactos");
+
+                entity.Property(e => e.Correo)
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("correo");
+
+                entity.Property(e => e.Direcion)
+                    .HasMaxLength(30)
+                    .IsUnicode(false)
+                    .HasColumnName("direcion");
+
+                entity.Property(e => e.Representante)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("representante");
+
+                entity.HasOne(d => d.Articulo)
+                    .WithMany(p => p.Proveedors)
+                    .HasForeignKey(d => d.ArticuloId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Proveedor__artic__571DF1D5");
             });
 
             modelBuilder.Entity<Rol>(entity =>
@@ -338,13 +373,13 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.RolId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__usuario__rolId__4F7CD00D");
+                    .HasConstraintName("FK__usuario__rolId__3C69FB99");
             });
 
             modelBuilder.Entity<Ventum>(entity =>
             {
                 entity.HasKey(e => e.VentaId)
-                    .HasName("PK__venta__40B8EB54F4382265");
+                    .HasName("PK__venta__40B8EB54184E02EB");
 
                 entity.ToTable("venta");
 
@@ -390,15 +425,14 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Venta)
                     .HasForeignKey(d => d.ClienteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__venta__clienteId__628FA481");
+                    .HasConstraintName("FK__venta__clienteId__4F7CD00D");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Venta)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__venta__usuarioId__6383C8BA");
+                    .HasConstraintName("FK__venta__usuarioId__5070F446");
             });
-
 
             OnModelCreatingPartial(modelBuilder);
         }
