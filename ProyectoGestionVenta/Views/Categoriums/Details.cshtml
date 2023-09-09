@@ -4,34 +4,121 @@
     ViewData["Title"] = "Details";
       Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 40;
+        padding: 30;
+    }
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    h4 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    dl {
+        margin: 30;
+        padding: 20;
+    }
 
-<h1>Details</h1>
+    dt {
+        font-weight: bold;
+        width: 100px;
+        float: left;
+        clear: left;
+        margin-right: 10px;
+    }
 
-<div>
-    <h4>Categorium</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.CategoriaId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    dd {
+        margin: 10;
+        padding: 10;
+        margin-bottom: 16px;
+        margin-left: 110px;
+    }
+    a {
+        color: blue;
+        text-decoration: none;
+        transition: color 0.3s, text-decoration 0.3s;
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+    .card {
+        width: 250px;
+        height: 300px;
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid black;
+    }
+    .card-header {
+        background-color: #eee;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .card-footer {
+        background-color: #eee;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Categoría</title>
+    <link rel="stylesheet" href="tu-archivo-de-estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Detalles de Categoría</h1>
+    </header>
+    <main>
+        <section class="categorias">
+            <h2>Categorías</h2>
+            <hr>
+            <dl class="categoria-details row">
+                <div class="col-sm-2">
+                    <dt>Nombre:</dt>
+                </div>
+                <div class="col-sm-10">
+                    <dd>@Model?.Nombre</dd>
+                </div>
+                <div class="col-sm-2">
+                    <dt>Descripción:</dt>
+                </div>
+                <div class="col-sm-10">
+                    <dd>@Model?.Descripcion</dd>
+                </div>
+                <div class="col-sm-2">
+                    <dt>Estado:</dt>
+                </div>
+                <div class="col-sm-10">
+                    <dd>@Model?.Estado</dd>
+                </div>
+            </dl>
+        </section>
+        <nav>
+            <a href="@Url.Action("Edit", new { id = Model?.CategoriaId })">Editar</a> |
+            <a href="@Url.Action("Index")">Volver a la Lista</a>
+        </nav>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

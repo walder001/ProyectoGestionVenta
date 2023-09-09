@@ -4,35 +4,104 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<style>
+   
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+    }
 
-<h1>Create</h1>
+    h4 {
+        font-size: 24px;
+        font-weight: bold;
+    }
 
-<h4>Categorium</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
-                <span asp-validation-for="Descripcion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    .row {
+        margin-top: 20px;
+    }
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    .col-md-4 {
+        width: 33.33%;
+        float: left;
+    }
+
+    form {
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .text-danger {
+        color: red;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: 1px solid #007bff;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+    .table-dark {
+        background-color: #0000ff;
+        color: #0000ff;
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Categoría</title>
+</head>
+<body>
+    <header>
+        <h1>Detalles de Categoría</h1>
+    </header>
+    <main>
+        <section>
+            <h4>Categoría</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">Nombre:</dt>
+                <dd class="col-sm-10">@Model?.Nombre</dd>
+                <dt class="col-sm-2">Descripción:</dt>
+                <dd class="col-sm-10">@Model?.Descripcion</dd>
+                <dt class="col-sm-2">Estado:</dt>
+                <dd class="col-sm-10">@Model?.Estado</dd>
+            </dl>
+        </section>
+        <nav>
+            <a asp-action="Edit" asp-route-id="@Model?.CategoriaId" class="btn btn-primary">Editar</a>
+            <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+        </nav>
+    </main>
+    <footer>
+       
+    </footer>
+</body>
+</html>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
