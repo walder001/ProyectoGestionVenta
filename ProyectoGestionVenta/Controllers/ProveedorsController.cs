@@ -21,8 +21,8 @@ namespace ProyectoGestionVenta.Controllers
         // GET: Proveedors
         public async Task<IActionResult> Index()
         {
-            var gestionVentasContext = _context.Proveedors.Include(p => p.Articulo);
-            return View(await gestionVentasContext.ToListAsync());
+            var gestionVentasContext = _context.Proveedors.ToListAsync();
+            return View(await gestionVentasContext);
         }
 
         // GET: Proveedors/Details/5
@@ -34,7 +34,6 @@ namespace ProyectoGestionVenta.Controllers
             }
 
             var proveedor = await _context.Proveedors
-                .Include(p => p.Articulo)
                 .FirstOrDefaultAsync(m => m.ProveedorId == id);
             if (proveedor == null)
             {
@@ -47,7 +46,6 @@ namespace ProyectoGestionVenta.Controllers
         // GET: Proveedors/Create
         public IActionResult Create()
         {
-            ViewData["ArticuloId"] = new SelectList(_context.Articulos, "ArticuloId", "ArticuloId");
             return View();
         }
 
@@ -56,7 +54,7 @@ namespace ProyectoGestionVenta.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProveedorId,Correo,ArticuloId,Representante,Direcion,Contactos")] Proveedor proveedor)
+        public async Task<IActionResult> Create([Bind("ProveedorId,Rnc,Nombre,Correo,Representante,Direccion,Contacto")] Proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +62,6 @@ namespace ProyectoGestionVenta.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticuloId"] = new SelectList(_context.Articulos, "ArticuloId", "ArticuloId", proveedor.ArticuloId);
             return View(proveedor);
         }
 
@@ -81,7 +78,6 @@ namespace ProyectoGestionVenta.Controllers
             {
                 return NotFound();
             }
-            ViewData["ArticuloId"] = new SelectList(_context.Articulos, "ArticuloId", "ArticuloId", proveedor.ArticuloId);
             return View(proveedor);
         }
 
@@ -117,7 +113,6 @@ namespace ProyectoGestionVenta.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticuloId"] = new SelectList(_context.Articulos, "ArticuloId", "ArticuloId", proveedor.ArticuloId);
             return View(proveedor);
         }
 
@@ -130,7 +125,6 @@ namespace ProyectoGestionVenta.Controllers
             }
 
             var proveedor = await _context.Proveedors
-                .Include(p => p.Articulo)
                 .FirstOrDefaultAsync(m => m.ProveedorId == id);
             if (proveedor == null)
             {

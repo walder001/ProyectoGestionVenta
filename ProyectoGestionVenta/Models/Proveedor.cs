@@ -5,13 +5,19 @@ namespace ProyectoGestionVenta.Models
 {
     public partial class Proveedor
     {
-        public int ProveedorId { get; set; }
-        public string Correo { get; set; } = null!;
-        public int ArticuloId { get; set; }
-        public string Representante { get; set; } = null!;
-        public string Direcion { get; set; } = null!;
-        public string Contactos { get; set; } = null!;
+        public Proveedor()
+        {
+            Articulos = new HashSet<Articulo>();
+        }
 
-        public virtual Articulo Articulo { get; set; } = null!;
+        public int ProveedorId { get; set; }
+        public int? Rnc { get; set; }
+        public string? Nombre { get; set; }
+        public string Correo { get; set; } = null!;
+        public string Representante { get; set; } = null!;
+        public string Direccion { get; set; } = null!;
+        public string Contacto { get; set; } = null!;
+
+        public virtual ICollection<Articulo> Articulos { get; set; }
     }
 }
