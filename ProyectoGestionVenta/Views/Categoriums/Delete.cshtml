@@ -59,21 +59,8 @@
         }
 </style>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Eliminar Categoría</title>
-</head>
-<body>
-    <header>
         <h1>Eliminar Categoría</h1>
-    </header>
-    <main>
-        <h3>¿Estás seguro de que deseas eliminar esto?</h3>
-        <div>
-            <h4>Categoría</h4>
-            <hr />
+    
             <dl class="row">
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Nombre)
@@ -100,11 +87,4 @@
                 <input type="submit" value="Eliminar" class="btn btn-danger" /> |
                 <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
             </form>
-        </div>
-    </main>
-    <footer>
-       
-    </footer>
-</body>
-</html>
-
+  

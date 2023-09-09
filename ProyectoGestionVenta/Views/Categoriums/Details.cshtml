@@ -70,21 +70,7 @@
     }
 
 </style>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Detalles de Categoría</title>
-    <link rel="stylesheet" href="tu-archivo-de-estilos.css">
-</head>
-<body>
-    <header>
         <h1>Detalles de Categoría</h1>
-    </header>
-    <main>
-        <section class="categorias">
-            <h2>Categorías</h2>
-            <hr>
             <dl class="categoria-details row">
                 <div class="col-sm-2">
                     <dt>Nombre:</dt>
@@ -105,16 +91,12 @@
                     <dd>@Model?.Estado</dd>
                 </div>
             </dl>
-        </section>
+     
         <nav>
-            <a href="@Url.Action("Edit", new { id = Model?.CategoriaId })">Editar</a> |
-            <a href="@Url.Action("Index")">Volver a la Lista</a>
+            <a class= "btn btn-primary" href="@Url.Action("Edit", new { id = Model?.CategoriaId })">Editar</a> 
+            <a class="btn btn-secondary" href="@Url.Action("Index")">Volver a la Lista</a>
         </nav>
-    </main>
-    <footer>
-    </footer>
-</body>
-</html>
+  
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
