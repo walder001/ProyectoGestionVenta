@@ -58,33 +58,40 @@
             border-bottom: 1px solid transparent;
         }
 </style>
+<div class="card card-primary col-7">
+    <div class="card-header">
+        <h3 class="card-title">Eliminar Categoría</h3>
+    </div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+           @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CategoriaId" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
-        <h1>Eliminar Categoría</h1>
-    
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Nombre)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Descripcion)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Descripcion)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Estado)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Estado)
-                </dd>
-            </dl>
-
-            <form asp-action="Delete">
-                <input type="hidden" asp-for="CategoriaId" />
-                <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-                <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
-            </form>
   

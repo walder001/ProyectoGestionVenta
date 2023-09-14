@@ -136,11 +136,7 @@
             color: #00F;
         }
   </style>
-    <title>Lista de Categorías</title>
-
     <h1>Lista de categorias</h1>
-
-
     <main>
         <p>
         <a class="btn btn-outline-primary" href="@Url.Action("Create")">Crear Nuevo</a>
@@ -174,5 +170,10 @@
             </tbody>
         </table>
     </main>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
 

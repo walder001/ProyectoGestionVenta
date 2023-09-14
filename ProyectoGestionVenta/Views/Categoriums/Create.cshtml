@@ -69,7 +69,7 @@
         color: #0000ff;
     }
 </style>
-<div class="card card-primary col-6">
+<div class="card card-primary col-7">
     <div class="card-header">
         <h3 class="card-title">Crear categorias</h3>
     </div>
@@ -99,13 +99,13 @@
     </form>
     <script>
         function soloLetras(event) {
-            var charCode = event.which || event.keyCode; // Obtener el código de la tecla presionada
+            var charCode = event.which || event.keyCode;
 
-            // Comprobar si la tecla presionada es una letra (a-zA-Z) o espacio (32)
+            
             if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
-                return true; // Permitir la tecla
+                return true; 
             } else {
-                return false; // Bloquear la tecla
+                return false; 
             }
         }
     </script>
@@ -114,7 +114,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-  
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
