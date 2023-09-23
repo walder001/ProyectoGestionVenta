@@ -5,14 +5,26 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Index</h1>
-
+<div class="d-flex justify-content-center">
+    <h1>Lista de proveedores </h1>
+</div>
 <p>
-    <a asp-action="Create">Create New</a>
+    <div class="d-grid gap-2 col-1 mx-auto">
+    @* <div class="d-flex justify-content-evenly"> *@
+    <a class="btn btn-outline-primary"  asp-action="Create">Nuevo</a>
+    @* </div> *@
+    </div>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead bg-primary">
+
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rnc)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Correo)
             </th>
@@ -20,41 +32,44 @@
                 @Html.DisplayNameFor(model => model.Representante)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direcion)
+                @Html.DisplayNameFor(model => model.Direccion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contactos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Articulo)
+                @Html.DisplayNameFor(model => model.Contacto)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Correo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Representante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contactos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Articulo.ArticuloId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProveedorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProveedorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProveedorId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rnc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Representante)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProveedorId">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProveedorId">Detalle</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProveedorId">Borrar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

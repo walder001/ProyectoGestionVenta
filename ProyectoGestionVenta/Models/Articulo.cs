@@ -9,11 +9,11 @@ namespace ProyectoGestionVenta.Models
         {
             DetalleIngresos = new HashSet<DetalleIngreso>();
             DetalleVenta = new HashSet<DetalleVentum>();
-            Proveedors = new HashSet<Proveedor>();
         }
 
         public int ArticuloId { get; set; }
         public int CategoriaId { get; set; }
+        public int? ProveedorId { get; set; }
         public string? Codigo { get; set; }
         public string Nombre { get; set; } = null!;
         public decimal PrecioVenta { get; set; }
@@ -22,8 +22,8 @@ namespace ProyectoGestionVenta.Models
         public bool? Estado { get; set; }
 
         public virtual Categorium Categoria { get; set; } = null!;
+        public virtual Proveedor? Proveedor { get; set; }
         public virtual ICollection<DetalleIngreso> DetalleIngresos { get; set; }
         public virtual ICollection<DetalleVentum> DetalleVenta { get; set; }
-        public virtual ICollection<Proveedor> Proveedors { get; set; }
     }
 }

@@ -98,6 +98,7 @@ namespace ProyectoGestionVenta.Controllers
             {
                 try
                 {
+                    categorium.Estado = true;
                     _context.Update(categorium);
                     await _context.SaveChangesAsync();
                 }

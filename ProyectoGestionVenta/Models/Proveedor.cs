@@ -1,17 +1,34 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoGestionVenta.Models
 {
     public partial class Proveedor
     {
-        public int ProveedorId { get; set; }
-        public string Correo { get; set; } = null!;
-        public int ArticuloId { get; set; }
-        public string Representante { get; set; } = null!;
-        public string Direcion { get; set; } = null!;
-        public string Contactos { get; set; } = null!;
+        public Proveedor()
+        {
+            Articulos = new HashSet<Articulo>();
+        }
 
-        public virtual Articulo Articulo { get; set; } = null!;
+        public int ProveedorId { get; set; }
+        [Required(ErrorMessage = "Favor ingresar correctamente el Rnc.")]
+        public int? Rnc { get; set; }
+        [Required (ErrorMessage = "Favor ingresar correctamente el Nombre.")]
+        public string? Nombre { get; set; }
+        [Remote(action: "VerifyEmail", controller: "Users")]
+        [EmailAddress(ErrorMessage = "Ingrese correctamente el Correo.")]
+        public string Correo { get; set; } = null!;
+        [Required(ErrorMessage = "Favor ingresar correctamente el Representante.")]
+        public string Representante { get; set; } = null!;
+        [Required(ErrorMessage = "Favor ingresar correctamente su Dirección.")]
+        public string Direccion { get; set; } = null!;
+
+        [RegularExpression(@"^\d{3}-\d{3}-\d{4}$")]
+        [Phone(ErrorMessage = "Favor de ingresar correctamente el numero de Contacto.")]
+        public string Contacto { get; set; } = null!;
+
+        public virtual ICollection<Articulo> Articulos { get; set; }
     }
 }

@@ -71,6 +71,8 @@ namespace ProyectoGestionVenta.Models
                     .HasColumnType("decimal(11, 2)")
                     .HasColumnName("precio_venta");
 
+                entity.Property(e => e.ProveedorId).HasColumnName("proveedorId");
+
                 entity.Property(e => e.Stock).HasColumnName("stock");
 
                 entity.HasOne(d => d.Categoria)
@@ -78,6 +80,11 @@ namespace ProyectoGestionVenta.Models
                     .HasForeignKey(d => d.CategoriaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__articulo__catego__44FF419A");
+
+                entity.HasOne(d => d.Proveedor)
+                    .WithMany(p => p.Articulos)
+                    .HasForeignKey(d => d.ProveedorId)
+                    .HasConstraintName("FK_articulo_Proveedor");
             });
 
             modelBuilder.Entity<Categorium>(entity =>
@@ -273,33 +280,31 @@ namespace ProyectoGestionVenta.Models
 
                 entity.Property(e => e.ProveedorId).HasColumnName("proveedorId");
 
-                entity.Property(e => e.ArticuloId).HasColumnName("articuloId");
-
-                entity.Property(e => e.Contactos)
+                entity.Property(e => e.Contacto)
                     .HasMaxLength(20)
                     .IsUnicode(false)
-                    .HasColumnName("contactos");
+                    .HasColumnName("contacto");
 
                 entity.Property(e => e.Correo)
                     .HasMaxLength(30)
                     .IsUnicode(false)
                     .HasColumnName("correo");
 
-                entity.Property(e => e.Direcion)
-                    .HasMaxLength(30)
+                entity.Property(e => e.Direccion)
+                    .HasMaxLength(250)
+                    .HasColumnName("direccion");
+
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("direcion");
+                    .HasColumnName("nombre");
 
                 entity.Property(e => e.Representante)
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("representante");
 
-                entity.HasOne(d => d.Articulo)
-                    .WithMany(p => p.Proveedors)
-                    .HasForeignKey(d => d.ArticuloId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Proveedor__artic__571DF1D5");
+                entity.Property(e => e.Rnc).HasColumnName("rnc");
             });
 
             modelBuilder.Entity<Rol>(entity =>
