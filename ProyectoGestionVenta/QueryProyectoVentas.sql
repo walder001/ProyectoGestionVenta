@@ -1,5 +1,6 @@
 create database GestionVentas;
-
+go
+use GestionVentas
 go
 --Tabla persona
 create table persona(
@@ -44,17 +45,32 @@ create table categoria(
        estado bit default(1)
 );
 go
+--Tabla Proveedor
+create table proveedor(
+	    proveedorId Integer primary key identity,
+	    rnc int NULL,
+	    nombre varchar(50) NULL,
+	    correo varchar(30) NOT NULL,
+	    representante varchar(20) NOT NULL,
+	    direccion nvarchar(250) NOT NULL,
+	    contacto varchar(20) NOT NULL,
+);
+go
 --Tabla artículo
 create table articulo(
        articuloId integer primary key identity,
        categoriaId integer not null,
+	   proveedorId integer not null,
        codigo varchar(50) null,
        nombre varchar(100) not null unique,
        precio_venta decimal(11,2) not null,
+	   costo decimal(11,2) not null,
        stock integer not null,
        descripcion varchar(256) null,
        estado bit default(1),
-       FOREIGN KEY (categoriaId) REFERENCES categoria(categoriaId)
+       FOREIGN KEY (categoriaId) REFERENCES categoria(categoriaId),
+	   FOREIGN KEY (proveedorId) REFERENCES proveedor(proveedorId)
+
 );
 go
 --Tabla ingreso
@@ -110,14 +126,4 @@ create table detalle_venta(
        descuento decimal(11,2) not null,
        FOREIGN KEY (ventaId) REFERENCES venta (ventaId) ON DELETE CASCADE,
        FOREIGN KEY (articuloId) REFERENCES articulo (articuloId)
-);
---Tabla Proveedor
-create table Proveedor(
-        proveedorId integer primary key identity,
-        correo varchar(30) not null,
-		articuloId integer not null,
-        representante varchar(20) not null,
-        direcion varchar(30) not null,
-        contactos varchar(20) not null,
-        FOREIGN KEY (articuloId) REFERENCES articulo (articuloId)
 );

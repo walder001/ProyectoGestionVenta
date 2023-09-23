@@ -30,6 +30,12 @@
             @Html.DisplayFor(model => model.PrecioVenta)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Costo)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Stock)
         </dt>
         <dd class = "col-sm-10">
@@ -57,7 +63,7 @@
             @Html.DisplayNameFor(model => model.Proveedor)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Proveedor.Direccion)
+            @Html.DisplayFor(model => model.Proveedor.ProveedorId)
         </dd>
     </dl>
     

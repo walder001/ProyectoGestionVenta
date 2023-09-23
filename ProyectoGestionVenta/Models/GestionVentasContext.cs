@@ -41,7 +41,7 @@ namespace ProyectoGestionVenta.Models
             {
                 entity.ToTable("articulo");
 
-                entity.HasIndex(e => e.Nombre, "UQ__articulo__72AFBCC63382FC1A")
+                entity.HasIndex(e => e.Nombre, "UQ__articulo__72AFBCC6CD801CEF")
                     .IsUnique();
 
                 entity.Property(e => e.ArticuloId).HasColumnName("articuloId");
@@ -52,6 +52,10 @@ namespace ProyectoGestionVenta.Models
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("codigo");
+
+                entity.Property(e => e.Costo)
+                    .HasColumnType("decimal(11, 2)")
+                    .HasColumnName("costo");
 
                 entity.Property(e => e.Descripcion)
                     .HasMaxLength(256)
@@ -79,22 +83,23 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Articulos)
                     .HasForeignKey(d => d.CategoriaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__articulo__catego__44FF419A");
+                    .HasConstraintName("FK__articulo__catego__47DBAE45");
 
                 entity.HasOne(d => d.Proveedor)
                     .WithMany(p => p.Articulos)
                     .HasForeignKey(d => d.ProveedorId)
-                    .HasConstraintName("FK_articulo_Proveedor");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__articulo__provee__48CFD27E");
             });
 
             modelBuilder.Entity<Categorium>(entity =>
             {
                 entity.HasKey(e => e.CategoriaId)
-                    .HasName("PK__categori__6378C0C0ACE7CF8B");
+                    .HasName("PK__categori__6378C0C09DE82B73");
 
                 entity.ToTable("categoria");
 
-                entity.HasIndex(e => e.Nombre, "UQ__categori__72AFBCC6DBB548D8")
+                entity.HasIndex(e => e.Nombre, "UQ__categori__72AFBCC6DE9F50FB")
                     .IsUnique();
 
                 entity.Property(e => e.CategoriaId).HasColumnName("categoriaId");
@@ -134,18 +139,18 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.DetalleIngresos)
                     .HasForeignKey(d => d.ArticuloId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__detalle_i__artic__4CA06362");
+                    .HasConstraintName("FK__detalle_i__artic__5070F446");
 
                 entity.HasOne(d => d.Ingreso)
                     .WithMany(p => p.DetalleIngresos)
                     .HasForeignKey(d => d.IngresoId)
-                    .HasConstraintName("FK__detalle_i__ingre__4BAC3F29");
+                    .HasConstraintName("FK__detalle_i__ingre__4F7CD00D");
             });
 
             modelBuilder.Entity<DetalleVentum>(entity =>
             {
                 entity.HasKey(e => e.DetalleVentaId)
-                    .HasName("PK__detalle___000CCCF79DC2EC46");
+                    .HasName("PK__detalle___000CCCF790943053");
 
                 entity.ToTable("detalle_venta");
 
@@ -169,12 +174,12 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.DetalleVenta)
                     .HasForeignKey(d => d.ArticuloId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__detalle_v__artic__5441852A");
+                    .HasConstraintName("FK__detalle_v__artic__5812160E");
 
                 entity.HasOne(d => d.Venta)
                     .WithMany(p => p.DetalleVenta)
                     .HasForeignKey(d => d.VentaId)
-                    .HasConstraintName("FK__detalle_v__venta__534D60F1");
+                    .HasConstraintName("FK__detalle_v__venta__571DF1D5");
             });
 
             modelBuilder.Entity<Ingreso>(entity =>
@@ -223,13 +228,13 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Ingresos)
                     .HasForeignKey(d => d.ProveedorId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ingreso__proveed__47DBAE45");
+                    .HasConstraintName("FK__ingreso__proveed__4BAC3F29");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Ingresos)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ingreso__usuario__48CFD27E");
+                    .HasConstraintName("FK__ingreso__usuario__4CA06362");
             });
 
             modelBuilder.Entity<Persona>(entity =>
@@ -276,7 +281,7 @@ namespace ProyectoGestionVenta.Models
 
             modelBuilder.Entity<Proveedor>(entity =>
             {
-                entity.ToTable("Proveedor");
+                entity.ToTable("proveedor");
 
                 entity.Property(e => e.ProveedorId).HasColumnName("proveedorId");
 
@@ -378,13 +383,13 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.RolId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__usuario__rolId__3C69FB99");
+                    .HasConstraintName("FK__usuario__rolId__3D5E1FD2");
             });
 
             modelBuilder.Entity<Ventum>(entity =>
             {
                 entity.HasKey(e => e.VentaId)
-                    .HasName("PK__venta__40B8EB54184E02EB");
+                    .HasName("PK__venta__40B8EB54E40D8982");
 
                 entity.ToTable("venta");
 
@@ -430,13 +435,13 @@ namespace ProyectoGestionVenta.Models
                     .WithMany(p => p.Venta)
                     .HasForeignKey(d => d.ClienteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__venta__clienteId__4F7CD00D");
+                    .HasConstraintName("FK__venta__clienteId__534D60F1");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Venta)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__venta__usuarioId__5070F446");
+                    .HasConstraintName("FK__venta__usuarioId__5441852A");
             });
 
             OnModelCreatingPartial(modelBuilder);

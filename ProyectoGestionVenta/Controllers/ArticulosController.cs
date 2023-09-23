@@ -9,11 +9,11 @@ using ProyectoGestionVenta.Models;
 
 namespace ProyectoGestionVenta.Controllers
 {
-    public class ArticuloesController : Controller
+    public class ArticulosController : Controller
     {
         private readonly GestionVentasContext _context;
 
-        public ArticuloesController(GestionVentasContext context)
+        public ArticulosController(GestionVentasContext context)
         {
             _context = context;
         }
@@ -49,7 +49,7 @@ namespace ProyectoGestionVenta.Controllers
         public IActionResult Create()
         {
             ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId");
-            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "Direccion");
+            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace ProyectoGestionVenta.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArticuloId,CategoriaId,ProveedorId,Codigo,Nombre,PrecioVenta,Stock,Descripcion,Estado")] Articulo articulo)
+        public async Task<IActionResult> Create([Bind("ArticuloId,CategoriaId,ProveedorId,Codigo,Nombre,PrecioVenta,Costo,Stock,Descripcion,Estado")] Articulo articulo)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace ProyectoGestionVenta.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId", articulo.CategoriaId);
-            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "Direccion", articulo.ProveedorId);
+            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId", articulo.ProveedorId);
             return View(articulo);
         }
 
@@ -85,7 +85,7 @@ namespace ProyectoGestionVenta.Controllers
                 return NotFound();
             }
             ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId", articulo.CategoriaId);
-            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "Direccion", articulo.ProveedorId);
+            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId", articulo.ProveedorId);
             return View(articulo);
         }
 
@@ -94,7 +94,7 @@ namespace ProyectoGestionVenta.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticuloId,CategoriaId,ProveedorId,Codigo,Nombre,PrecioVenta,Stock,Descripcion,Estado")] Articulo articulo)
+        public async Task<IActionResult> Edit(int id, [Bind("ArticuloId,CategoriaId,ProveedorId,Codigo,Nombre,PrecioVenta,Costo,Stock,Descripcion,Estado")] Articulo articulo)
         {
             if (id != articulo.ArticuloId)
             {
@@ -122,7 +122,7 @@ namespace ProyectoGestionVenta.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId", articulo.CategoriaId);
-            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "Direccion", articulo.ProveedorId);
+            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId", articulo.ProveedorId);
             return View(articulo);
         }
 

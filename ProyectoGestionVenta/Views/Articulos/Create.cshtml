@@ -1,27 +1,25 @@
 ﻿@model ProyectoGestionVenta.Models.Articulo
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Edit</h1>
-
+<h1>Create</h1>
+<link href="~/css/categoria.css" rel="stylesheet" />
+<div class="card card-primary col-7 offset-3">
+    <div class="card-header">
 <h4>Articulo</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ArticuloId" />
             <div class="form-group">
                 <label asp-for="CategoriaId" class="control-label"></label>
-                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
-                <span asp-validation-for="CategoriaId" class="text-danger"></span>
+                <select asp-for="CategoriaId" class ="form-control" asp-items="ViewBag.CategoriaId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ProveedorId" class="control-label"></label>
-                <select asp-for="ProveedorId" class="form-control" asp-items="ViewBag.ProveedorId"></select>
-                <span asp-validation-for="ProveedorId" class="text-danger"></span>
+                <select asp-for="ProveedorId" class ="form-control" asp-items="ViewBag.ProveedorId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Codigo" class="control-label"></label>
@@ -39,6 +37,11 @@
                 <span asp-validation-for="PrecioVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Costo" class="control-label"></label>
+                <input asp-for="Costo" class="form-control" />
+                <span asp-validation-for="Costo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Stock" class="control-label"></label>
                 <input asp-for="Stock" class="form-control" />
                 <span asp-validation-for="Stock" class="text-danger"></span>
@@ -49,12 +52,7 @@
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Estado" class="control-label"></label>
-                <input asp-for="Estado" class="form-control" />
-                <span asp-validation-for="Estado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
