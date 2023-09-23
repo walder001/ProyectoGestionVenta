@@ -4,100 +4,42 @@
     ViewData["Title"] = "Details";
       Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 40;
-        padding: 30;
-    }
-    h1 {
-        font-size: 24px;
-        font-weight: bold;
-    }
-    h4 {
-        font-size: 16px;
-        font-weight: bold;
-    }
-    dl {
-        margin: 30;
-        padding: 20;
-    }
-
-    dt {
-        font-weight: bold;
-        width: 100px;
-        float: left;
-        clear: left;
-        margin-right: 10px;
-    }
-
-    dd {
-        margin: 10;
-        padding: 10;
-        margin-bottom: 16px;
-        margin-left: 110px;
-    }
-    a {
-        color: blue;
-        text-decoration: none;
-        transition: color 0.3s, text-decoration 0.3s;
-
-        a:hover {
-            color: red;
-            text-decoration: underline;
-        }
-    .card {
-        width: 250px;
-        height: 300px;
-        padding: 10px;
-        margin: 10px;
-        border: 1px solid black;
-    }
-    .card-header {
-        background-color: #eee;
-        padding: 5px;
-        margin-bottom: 10px;
-    }
-
-    .card-body {
-        padding: 10px;
-    }
-
-    .card-footer {
-        background-color: #eee;
-        padding: 5px;
-        margin-top: 10px;
-    }
-
-</style>
-<div class="card card-primary col-6">
+<link href="~/css/categoria.css" rel="stylesheet" />
+<div class="card card-primary col-6 offset-3">
     <div class="card-header">
         <h3 class="card-title">Detalles de Categoría</h3>
     </div>
     <dl class="categoria-details row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <dt>Nombre:</dt>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <dd>@Model?.Nombre</dd>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <dt>Descripción:</dt>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <dd>@Model?.Descripcion</dd>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <dt>Estado:</dt>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <dd>@Model?.Estado</dd>
         </div>
     </dl>
 
     <nav>
-        <a class="btn btn-primary" href="@Url.Action("Edit", new { id = Model?.CategoriaId })">Editar</a>
-        <a class="btn btn-secondary" href="@Url.Action("Index")">Volver a la Lista</a>
+
+        <div class="row offset-2">
+            <div class="col">
+                <a class="btn btn-primary col-6" href="@Url.Action("Edit", new { id = Model?.CategoriaId })">Editar</a>
+            </div>
+            <div class="col">
+                <a class="btn btn-secondary col-6" href="@Url.Action("Index")">Ir a Lista</a>
+            </div>
+        </div>
     </nav>
 </div>
 

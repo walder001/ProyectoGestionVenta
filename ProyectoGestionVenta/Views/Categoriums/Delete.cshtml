@@ -4,61 +4,9 @@
     ViewData["Title"] = "Delete";
       Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<style>
-    .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+<link href="~/css/categoria.css" rel="stylesheet" />
 
-    h1 {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    h3 {
-        font-size: 18px;
-        color: #000;
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    dl {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    dt {
-        font-weight: bold;
-    }
-
-    input[type="submit"].btn-danger {
-        background-color: #007BFf;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-    }
-
-    .back-link {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        color: #007BFF;
-        border-bottom: 1px solid #007BFF;
-        transition: border-bottom 0.2s;
-    }
-
-        .back-link:hover {
-            border-bottom: 1px solid transparent;
-        }
-</style>
-<div class="card card-primary col-7">
+<div class="card card-primary col-7 offset-3">
     <div class="card-header">
         <h3 class="card-title">Eliminar Categoría</h3>
     </div>
@@ -84,8 +32,15 @@
     </dl>
     <form asp-action="Delete">
         <input type="hidden" asp-for="CategoriaId" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la Lista</a>
+
+        <div class="row offset-2">
+            <div class="col">
+                <input type="submit" value="Eliminar" class="btn btn-danger col-6" />
+            </div>
+            <div class="col">
+                <a href="@Url.Action("Index")" class="btn btn-secondary col-6">Ir a Lista</a>
+            </div>
+        </div>
     </form>
 </div>
 @section Scripts {
