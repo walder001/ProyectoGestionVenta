@@ -4,23 +4,28 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+
+
 <link href="~/css/categoria.css" rel="stylesheet" />
-<div class="card card-primary col-7 offset-3">
-    <div class="card-header">
-<h4>Articulo</h4>
+<div class="card card-primary">
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CategoriaId" class="control-label"></label>
-                <select asp-for="CategoriaId" class ="form-control" asp-items="ViewBag.CategoriaId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProveedorId" class="control-label"></label>
-                <select asp-for="ProveedorId" class ="form-control" asp-items="ViewBag.ProveedorId"></select>
-            </div>
+                <h1>Create</h1>
+
+                <div class="row">
+                    <div class="form-group col">
+                        <label asp-for="CategoriaId" class="control-label"></label>
+                        <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                    </div>
+                    <div class="form-group col">
+                        <label asp-for="ProveedorId" class="control-label"></label>
+                        <select asp-for="ProveedorId" class="form-control" asp-items="ViewBag.ProveedorId"></select>
+                    </div>
+
+                </div>
+
             <div class="form-group">
                 <label asp-for="Codigo" class="control-label"></label>
                 <input asp-for="Codigo" class="form-control" />
