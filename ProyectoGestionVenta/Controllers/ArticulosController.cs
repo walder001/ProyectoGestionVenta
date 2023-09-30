@@ -48,8 +48,8 @@ namespace ProyectoGestionVenta.Controllers
         // GET: Articuloes/Create
         public IActionResult Create()
         {
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId");
-            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId");
+            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "Nombre");
+            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "Nombre");
             return View();
         }
 
@@ -58,17 +58,17 @@ namespace ProyectoGestionVenta.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ArticuloId,CategoriaId,ProveedorId,Codigo,Nombre,PrecioVenta,Costo,Stock,Descripcion,Estado")] Articulo articulo)
+        public async Task<IActionResult> Create([Bind("ArticuloId,CategoriaId,ProveedorId,Codigo,Nombre,PrecioVenta,Costo,Stock,Descripcion,Estado, Categoria, Proveedor")] Articulo articulo)
         {
-            if (ModelState.IsValid)
-            {
+                articulo.Proveedor = _context.Proveedors.FirstOrDefault(x => x.ProveedorId == articulo.ProveedorId);
+                articulo.Categoria = _context.Categoria.FirstOrDefault(x => x.CategoriaId == articulo.CategoriaId);
                 _context.Add(articulo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId", articulo.CategoriaId);
-            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId", articulo.ProveedorId);
-            return View(articulo);
+            
+            //["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId", articulo.CategoriaId);
+            //ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId", articulo.ProveedorId);
+            //return View(articulo);
         }
 
         // GET: Articuloes/Edit/5
