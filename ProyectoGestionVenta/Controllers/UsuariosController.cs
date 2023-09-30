@@ -47,7 +47,7 @@ namespace ProyectoGestionVenta.Controllers
         // GET: Usuarios/Create
         public IActionResult Create()
         {
-            ViewData["RolId"] = new SelectList(_context.Rols, "RolId", "RolId");
+            ViewData["RolId"] = new SelectList(_context.Rols, "RolId", "Nombre");
             return View();
         }
 
@@ -56,16 +56,21 @@ namespace ProyectoGestionVenta.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioId,RolId,Nombre,TipoDocumento,NumDocumento,Direccion,Telefono,Email,Password,Estado")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("UsuarioId,RolId,Nombre,TipoDocumento,NumDocumento,Direccion,Telefono,Email,Password,Estado")] Usuario usuario, bool v)
         {
-            if (ModelState.IsValid)
+            try
             {
+
+
+                usuario.Rol = _context.Rols.FirstOrDefault(v => v.RolId == usuario.RolId);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            
+        }catch(Exception ex) { return View(usuario);
+            
             }
-            ViewData["RolId"] = new SelectList(_context.Rols, "RolId", "RolId", usuario.RolId);
-            return View(usuario);
+
         }
 
         // GET: Usuarios/Edit/5

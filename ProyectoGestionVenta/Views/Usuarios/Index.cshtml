@@ -33,16 +33,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Email)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Password)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Estado)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Rol)
-                </th>
-                <th></th>
+               
+                
+                
+                <th>Acciones</th>
             </tr>
 
         </thead>
@@ -67,19 +61,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+                    
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rol.RolId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.UsuarioId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UsuarioId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UsuarioId">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.UsuarioId"><i class="fas fa-pencil-alt"></i> Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.UsuarioId"><i class="fa fa-list" aria-hidden="true"></i>Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.UsuarioId"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
             </td>
         </tr>
 }

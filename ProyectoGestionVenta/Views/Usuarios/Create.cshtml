@@ -24,36 +24,49 @@
 
              </div>
 
-            <div class="form-group">
+             <div class="row">
+
+            <div class="form-group col">
                 <label asp-for="TipoDocumento" class="control-label"></label>
                 <input asp-for="TipoDocumento" class="form-control" />
                 <span asp-validation-for="TipoDocumento" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group col">
                 <label asp-for="NumDocumento" class="control-label"></label>
                 <input asp-for="NumDocumento" class="form-control" />
                 <span asp-validation-for="NumDocumento" class="text-danger"></span>
             </div>
-            <div class="form-group">
+        </div>
+
+        <div class="row">
+
+            <div class="form-group col">
                 <label asp-for="Direccion" class="control-label"></label>
                 <input asp-for="Direccion" class="form-control" />
                 <span asp-validation-for="Direccion" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label asp-for="Telefono" class="control-label"></label>
                 <input asp-for="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
-            <div class="form-group">
+        </div>
+        
+        <div class="row">
+
+            <div class="form-group col">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+        </div>
+
         <div class="row offset-2">
             <div class="col">
                 <input type="submit" value="Crear" class="btn btn-primary col-6" />

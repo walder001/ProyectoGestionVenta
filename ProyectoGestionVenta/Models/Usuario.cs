@@ -19,7 +19,7 @@ namespace ProyectoGestionVenta.Models
         public string? Direccion { get; set; }
         public string? Telefono { get; set; }
         public string Email { get; set; } = null!;
-        public byte[] Password { get; set; } = null!;
+        public string Password { get; set; } = null!;
         public bool? Estado { get; set; }
 
         public virtual Rol Rol { get; set; } = null!;
