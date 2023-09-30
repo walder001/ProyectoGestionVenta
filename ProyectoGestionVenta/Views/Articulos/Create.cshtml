@@ -7,12 +7,13 @@
 
 
 <link href="~/css/categoria.css" rel="stylesheet" />
-<div class="card card-primary">
-<div class="row">
-    <div class="col">
+<div class="card card-primary col-7 offset-3">
+    <div class="card-header">
+        <h3 class="card-title">Crear Articulos</h3>
+    </div>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <h1>Create</h1>
+                
 
                 <div class="row">
                     <div class="form-group col">
@@ -26,47 +27,47 @@
 
                 </div>
 
-            <div class="form-group">
+            <div class="form-group col">
                 <label asp-for="Codigo" class="control-label"></label>
                 <input asp-for="Codigo" class="form-control" />
                 <span asp-validation-for="Codigo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group  col">
                 <label asp-for="PrecioVenta" class="control-label"></label>
                 <input asp-for="PrecioVenta" class="form-control" />
                 <span asp-validation-for="PrecioVenta" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label asp-for="Costo" class="control-label"></label>
                 <input asp-for="Costo" class="form-control" />
                 <span asp-validation-for="Costo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label asp-for="Stock" class="control-label"></label>
                 <input asp-for="Stock" class="form-control" />
                 <span asp-validation-for="Stock" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+        <div class="row offset-2">
+            <div class="col">
+                <input type="submit" value="Crear" class="btn btn-primary col-6" />
             </div>
+            <div class="col">
+                <a class="btn btn-secondary col-6" href="@Url.Action("Index")">Ir a Lista</a>
+            </div>
+        </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
