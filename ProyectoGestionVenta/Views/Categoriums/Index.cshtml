@@ -153,11 +153,8 @@
                         <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
                         <td>@Html.DisplayFor(modelItem => item.Estado)</td>
                         <td>
-                        <a href="@Url.Action("Edit", new { id = item.CategoriaId })">
-                            <i class="fas fa-pencil-alt"></i> Editar
-                        </a>
-
-                        <a href="@Url.Action("Details", new { id = item.CategoriaId })"><i class="fa fa-list" aria-hidden="true"></i> Detalles</a> |
+                        <a href="@Url.Action("Edit", new { id = item.CategoriaId })"><i class="fas fa-pencil-alt"></i> Editar</a>
+                        <a href="@Url.Action("Details", new { id = item.CategoriaId })"><i class="fa fa-list" aria-hidden="true"></i> Detalles</a> 
                         <a href="@Url.Action("Delete", new { id = item.CategoriaId })"><i class="fa fa-trash" aria-hidden="true"></i>Eliminar</a>
                         </td>
                     </tr>

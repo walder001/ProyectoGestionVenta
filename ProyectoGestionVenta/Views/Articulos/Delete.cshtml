@@ -65,15 +65,15 @@
         </dd>
     </dl>
     <form asp-action="Delete">
-        <input type="hidden" asp-for="ArticuloId" />
+        <input type="hidden" asp-for="CategoriaId" />
 
-        <div class="row offset-2"
-          <div class="col">
-              <input type="submit" value="Delete" class="btn btn-danger  col-6" /> 
-           </div>
-        <div class="col"
-             <a href="@Url.Action("Index")" class="btn btn-secondary col-6">Ir a Lista</a>
-           </div>
+        <div class="row offset-2">
+            <div class="col">
+                <input type="submit" value="Eliminar" class="btn btn-danger col-6" />
+            </div>
+            <div class="col">
+                <a href="@Url.Action("Index")" class="btn btn-secondary col-6">Ir a Lista</a>
+            </div>
         </div>
-    </form>
+        </form>
 </div>

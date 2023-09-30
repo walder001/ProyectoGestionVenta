@@ -148,9 +148,7 @@
             <th>@Html.DisplayNameFor(model => model.Stock)</th>
             <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
             <th>@Html.DisplayNameFor(model => model.Estado)</th>
-            <th>@Html.DisplayNameFor(model => model.Categoria.CategoriaId)</th>
-            <th>@Html.DisplayNameFor(model => model.Proveedor.ProveedorId)</th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -164,12 +162,10 @@
                 <td>@Html.DisplayFor(modelItem => item.Stock)</td>
                 <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
                 <td>@Html.DisplayFor(modelItem => item.Estado)</td>
-                <td>@Html.DisplayFor(modelItem => item.Categoria.CategoriaId)</td>
-                <td>@Html.DisplayFor(modelItem => item.Proveedor.ProveedorId)</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ArticuloId">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.ArticuloId">Detalle</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ArticuloId">Eliminar</a>
+                    <a asp-action="Edit" asp-route-id="@item.ArticuloId"><i class="fas fa-pencil-alt"></i>Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.ArticuloId"><i class="fa fa-list" aria-hidden="true"></i>Detalle</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ArticuloId"><i class="fa fa-trash" aria-hidden="true"></i>Eliminar</a>
                 </td>
             </tr>
         }
