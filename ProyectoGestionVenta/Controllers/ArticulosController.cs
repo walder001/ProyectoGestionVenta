@@ -96,8 +96,10 @@ namespace ProyectoGestionVenta.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticuloId,CategoriaId,ProveedorId,Codigo,Nombre,PrecioVenta,Costo,Stock,Descripcion,Estado")] Articulo articulo)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoriaId,Nombre,Descripcion,Estado")] Articulo articulo)
         {
+            articulo.Proveedor = _context.Proveedors.FirstOrDefault(x => x.ProveedorId == articulo.ProveedorId);
+            articulo.Categoria = _context.Categoria.FirstOrDefault(x => x.CategoriaId == articulo.CategoriaId);
             if (id != articulo.ArticuloId)
             {
                 return NotFound();
