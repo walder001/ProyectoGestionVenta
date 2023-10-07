@@ -7,7 +7,7 @@
 
 
 <link href="~/css/categoria.css" rel="stylesheet" />
-<div class="card card-primary col-7 offset-3">
+<div class="card card-primary col-12">
     <div class="card-header">
         <h3 class="card-title">Crear Articulos</h3>
     </div>
@@ -24,9 +24,9 @@
                         <label asp-for="ProveedorId" class="control-label"></label>
                         <select asp-for="ProveedorId" class="form-control" asp-items="ViewBag.ProveedorId"></select>
                     </div>
-
                 </div>
 
+                <div class="row">
             <div class="form-group col">
                 <label asp-for="Codigo" class="control-label"></label>
                 <input asp-for="Codigo" class="form-control" />
@@ -37,6 +37,9 @@
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
+
+                </div>
+
             <div class="form-group  col">
                 <label asp-for="PrecioVenta" class="control-label"></label>
                 <input asp-for="PrecioVenta" class="form-control" />

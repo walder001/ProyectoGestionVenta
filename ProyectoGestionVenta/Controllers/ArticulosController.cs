@@ -103,29 +103,28 @@ namespace ProyectoGestionVenta.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+ 
+            try
             {
-                try
-                {
-                    _context.Update(articulo);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ArticuloExists(articulo.ArticuloId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                articulo.Proveedor = _context.Proveedors.FirstOrDefault(x => x.ProveedorId == articulo.ProveedorId);
+                articulo.Categoria = _context.Categoria.FirstOrDefault(x => x.CategoriaId == articulo.CategoriaId);
+
+                _context.Update(articulo);
+                await _context.SaveChangesAsync();
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "CategoriaId", articulo.CategoriaId);
-            ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "ProveedorId", articulo.ProveedorId);
-            return View(articulo);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ArticuloExists(articulo.ArticuloId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
+            
         }
 
         // GET: Articuloes/Delete/5
