@@ -4,9 +4,11 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>Details</h1>
-
+<link href="~/css/usuarios.css" rel="stylesheet" />
+<div class="card card-primary col-6 offset-3">
+    <div class="card-header">
+        <h3 class="card-title">Detalles de Usuario</h3>
+    </div>
 <div>
     <h4>Usuario</h4>
     <hr />
@@ -66,8 +68,15 @@
             @Html.DisplayFor(model => model.Rol.RolId)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.UsuarioId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        <nav>
+
+            <div class="row offset-2">
+                <div class="col">
+                    <a class="btn btn-primary col-6" href="@Url.Action("Edit", new { id = Model?.UsuarioId })">Editar</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary col-6" href="@Url.Action("Index")">Ir a Lista</a>
+                </div>
+            </div>
+        </nav>
+    </div>

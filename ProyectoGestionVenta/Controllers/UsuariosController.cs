@@ -86,7 +86,7 @@ namespace ProyectoGestionVenta.Controllers
             {
                 return NotFound();
             }
-            ViewData["RolId"] = new SelectList(_context.Rols, "RolId", "RolId", usuario.RolId);
+            ViewData["RolId"] = new SelectList(_context.Rols, "RolId", "Nombre", usuario.RolId);
             return View(usuario);
         }
 
