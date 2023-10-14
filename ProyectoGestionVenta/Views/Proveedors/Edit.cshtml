@@ -13,27 +13,50 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProveedorId" />
-            <div class="form-group">
-                <label asp-for="Correo" class="control-label"></label>
-                <input asp-for="Correo" class="form-control" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" placeholder="Solo puede escribir letras" onkeypress="return soloLetras(event)" />
+
+                <div class="valid-feedback">
+                    ¡Campo válido!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, ingresa tu nombre.
+                </div>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Rnc" class="control-label"></label>
+                <input asp-for="Rnc" class="form-control" maxlength="11" placeholder="Máximo 11 caracteres" onkeypress="return rncCarateres(event)" />
+                <span asp-validation-for="Rnc" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Correo" class="control-label"></label>
+            <input asp-for="Correo" class="form-control" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="form-group col">
                 <label asp-for="Representante" class="control-label"></label>
-                <input asp-for="Representante" class="form-control" />
+                <input asp-for="Representante" class="form-control" placeholder="Solo puede escribir letras" onkeypress="return soloLetras(event)" />
                 <span asp-validation-for="Representante" class="text-danger"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group col">
                 <label asp-for="Direccion" class="control-label"></label>
                 <input asp-for="Direccion" class="form-control" />
                 <span asp-validation-for="Direccion" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Contacto" class="control-label"></label>
-                <input asp-for="Contacto" class="form-control" />
-                <span asp-validation-for="Contacto" class="text-danger"></span>
-            </div>
+        </div> 
+        <div class="form-group">
+            <label asp-for="Contacto" class="control-label"></label>
+            <input asp-for="Contacto" class="form-control" id="inputText1" placeholder="Solo puede ingresar numeros" onkeypress="return contactoCarateres(event)" />
+            <span asp-validation-for="Contacto" class="text-danger"></span>
+        </div>
+
             <div class="row offset-2">
                 <div class="col">
                     <input type="submit" value="Guardar" class="btn btn-primary col-6" />
@@ -56,10 +79,6 @@
                 }
            }
         </script>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
