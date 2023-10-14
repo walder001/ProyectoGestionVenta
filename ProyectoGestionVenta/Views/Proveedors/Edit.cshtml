@@ -5,12 +5,11 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Proveedor</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<link href="~/css/proovedor.css" rel="stylesheet" />
+<div class="card card-primary col-7 offset-3">
+    <div class="card-header">
+        <h3 class="card-title">Editar Proovedor </h3>
+    </div>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProveedorId" />
@@ -35,11 +34,28 @@
                 <input asp-for="Contacto" class="form-control" />
                 <span asp-validation-for="Contacto" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="row offset-2">
+                <div class="col">
+                    <input type="submit" value="Guardar" class="btn btn-primary col-6" />
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary col-6" href="@Url.Action("Index")">Ir a Lista</a>
+                </div>
             </div>
+
         </form>
-    </div>
+        <script>
+            function soloLetras(event) {
+                var charCode = event.which || event.keyCode; // Obtener el código de la tecla presionada
+
+                // Comprobar si la tecla presionada es una letra (a-zA-Z) o espacio (32)
+                if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
+                    return true; // Permitir la tecla
+                } else {
+                    return false; // Bloquear la tecla
+                }
+           }
+        </script>
 </div>
 
 <div>

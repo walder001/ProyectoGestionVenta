@@ -4,13 +4,12 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>Proveedor</h4>
-    <hr />
-    <dl class="row">
+<link href="~/css/proovedor.css" rel="stylesheet" />
+<div class="card card-primary col-6 offset-3">
+    <div class="card-header">
+        <h3 class="card-title">Detalles de Proveedor</h3>
+    </div>
+    <dl class="proveedor-details row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Correo)
         </dt>
@@ -36,8 +35,23 @@
             @Html.DisplayFor(model => model.Contacto)
         </dd>
     </dl>
+        <nav>
+
+            <div class="row offset-2">
+                <div class="col">
+                    <a class="btn btn-primary col-6" href="@Url.Action("Edit", new { id = Model?.ProveedorId })">Editar</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary col-6" href="@Url.Action("Index")">Ir a Lista</a>
+                </div>
+            </div>
+        </nav>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ProveedorId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

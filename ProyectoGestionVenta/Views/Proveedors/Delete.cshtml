@@ -4,13 +4,12 @@
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<link href="~/css/proovedor.css/" rel="stylesheet" />
 
-<h1>Borrar</h1>
-
-<h3>Realmente deseas borrar esto?</h3>
-<div>
-    <h4>Proveedor</h4>
-    <hr />
+<div class="card card-primary col-7 offset-3">
+    <div class="card-header">
+        <h3 class="card-title">Eliminar Proveedor</h3>
+    </div>
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Correo)
@@ -38,10 +37,21 @@
         </dd>
 
     </dl>
-    
     <form asp-action="Delete">
         <input type="hidden" asp-for="ProveedorId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Volver a la lista</a>
+
+        <div class="row offset-2">
+            <div class="col">
+                <input type="submit" value="Eliminar" class="btn btn-danger col-6" />
+            </div>
+            <div class="col">
+                <a href="@Url.Action("Index")" class="btn btn-secondary col-6">Ir a Lista</a>
+            </div>
+        </div>
     </form>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
