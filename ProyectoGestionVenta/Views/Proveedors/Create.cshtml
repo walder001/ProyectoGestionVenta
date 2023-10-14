@@ -4,57 +4,77 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<div class="card card-primary col-md6">
+<link href="~/css/proovedor.css" rel="stylesheet" />
+<div class="card card-primary col-7 offset-3">
     <div class="card-header">
-        <h3 class="card-title">Crear nuevo proveedor</h3>
+        <h3 class="card-title">Crear Categorias</h3>
     </div>
-
-    <div class="card-body">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Nombre" class="control-label"></label>
-                    <input asp-for="Nombre" class="form-control" />
-                    <span asp-validation-for="Nombre" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Rnc" class="control-label"></label>
-                    <input asp-for="Rnc" class="form-control" />
-                    <span asp-validation-for="Rnc" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Correo" class="control-label"></label>
-                    <input asp-for="Correo" class="form-control" />
-                    <span asp-validation-for="Correo" class="text-danger"></span>
-                </div>
+            <label asp-for="Nombre" class="control-label"></label>
+            <input asp-for="Nombre" class="form-control" onkeypress="return soloLetras(event)" />
 
-                <div class="form-group">
-                    <label asp-for="Representante" class="control-label"></label>
-                    <input asp-for="Representante" class="form-control" />
-                    <span asp-validation-for="Representante" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Direccion" class="control-label"></label>
-                    <input asp-for="Direccion" class="form-control" />
-                    <span asp-validation-for="Direccion" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Contacto" class="control-label"></label>
-                    <input asp-for="Contacto" class="form-control" />
-                    <span asp-validation-for="Contacto" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Crear" class="btn btn-primary" />
-                </div>
-            </form>
+            <div class="valid-feedback">
+                ¡Campo válido!
+            </div>
+            <div class="invalid-feedback">
+                Por favor, ingresa tu nombre.
+            </div>
+            <span asp-validation-for="Nombre" class="text-danger"></span>
         </div>
-    </div>
-</div>
+        <div class="form-group">
+            <label asp-for="Rnc" class="control-label"></label>
+            <input asp-for="Rnc" class="form-control" />
+            <span asp-validation-for="Rnc" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Correo" class="control-label"></label>
+            <input asp-for="Correo" class="form-control" />
+            <span asp-validation-for="Correo" class="text-danger"></span>
+        </div>
 
-<div>
-    <a asp-action="Index">Volver a lista</a>
+        <div class="form-group">
+            <label asp-for="Representante" class="control-label"></label>
+            <input asp-for="Representante" class="form-control" onkeypress="return soloLetras(event)" />
+            <span asp-validation-for="Representante" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Direccion" class="control-label"></label>
+            <input asp-for="Direccion" class="form-control" />
+            <span asp-validation-for="Direccion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Contacto" class="control-label"></label>
+            <input asp-for="Contacto" class="form-control" />
+            <span asp-validation-for="Contacto" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Crear" class="btn btn-primary" />
+        </div>
+        <div class="row offset-2">
+            <div class="col">
+                <input type="submit" value="Crear" class="btn btn-primary col-6" />
+            </div>
+            <div class="col">
+                <a class="btn btn-secondary col-6" href="@Url.Action("Index")">Ir a Lista</a>
+            </div>
+        </div>
+    </form>
+    <script>
+        function soloLetras(event) {
+            var charCode = event.which || event.keyCode;
+
+
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+
 </div>
 
 @section Scripts {
