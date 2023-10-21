@@ -8,15 +8,14 @@ function soloLetras(event) {
         return false;
     }
 }
-function validarNumerosYGuiones(input) {
-    // Obtenemos el valor actual del input
+function validarEntrada(input) {
     var valor = input.value;
-    // Reemplazamos todo lo que no sea número o guión por una cadena vacía
-    var valorValidado = valor.replace(/[^0-11-]/g, '');
-    // Limitamos la longitud a 9 caracteres
-    valorValidado = valorValidado.slice(0, 11);
-    // Si el valor ha cambiado, actualizamos el contenido del input
-    if (valor !== valorValidado) {
-        input.value = valorValidado;
+    // Elimina cualquier carácter que no sea un número (0-9) ni guión (-)
+    valor = valor.replace(/[^\d-]/g, '');
+    // Asegura que no haya más de 9 caracteres
+    if (valor.length > 9) {
+        valor = valor.slice(0, 9);
     }
+    input.value = valor;
+}
 }

@@ -35,7 +35,7 @@
 
             <div class="form-group col">
                 <label for="NumDocumento">NumDocumento</label>
-                <input type="text" id="NumDocumento" maxlength="11" oninput="validarNumerosYGuiones(this)" />
+                <input type="text" id="NumDocumento" oninput="validarEntrada(this)" maxlength="13" />
                 <span asp-validation-for="NumDocumento" class="text-danger"></span>
             </div>
         </div>
@@ -48,8 +48,8 @@
                 <span asp-validation-for="Direccion" class="text-danger"></span>
             </div>
             <div class="form-group col">
-                <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" />
+                <label for="Telefono">Telefono</label>
+                <input type="text" id="Telefono" oninput="validarEntrada(this)" maxlength="12" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
         </div>
