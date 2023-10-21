@@ -6,5 +6,4 @@
 $(document).ready(function () {
     $('.telefono').mask('000-000-0000');
     $('.rnc').mask('000-00000000-0');
-
 });

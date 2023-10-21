@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -54,6 +56,30 @@ namespace ProyectoGestionVenta.Controllers
         // POST: Usuarios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
+  
+        static string HashCadenaSHA256(string cadena)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Convertir la cadena en un array de bytes
+                byte[] bytes = Encoding.UTF8.GetBytes(cadena);
+
+                // Calcular el hash (array de bytes) de la cadena
+                byte[] hashBytes = sha256Hash.ComputeHash(bytes);
+
+                // Convertir el array de bytes a una representación de cadena
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    stringBuilder.Append(hashBytes[i].ToString("x2"));
+                }
+                return stringBuilder.ToString();
+            }
+        }
+
+
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UsuarioId,RolId,Nombre,TipoDocumento,NumDocumento,Direccion,Telefono,Email,Password,Estado")] Usuario usuario, bool v)
@@ -61,7 +87,7 @@ namespace ProyectoGestionVenta.Controllers
             try
             {
 
-
+                usuario.Password = HashCadenaSHA256(usuario.Password);
                 usuario.Rol = _context.Rols.FirstOrDefault(v => v.RolId == usuario.RolId);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
