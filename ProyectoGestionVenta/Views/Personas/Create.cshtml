@@ -18,19 +18,19 @@
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group col">
-                <label asp-for="TipoPersona" class="control-label"></label>
+                <label asp-for="TipoPersona" class="control-label">Tipo de Persona</label>
                 <input asp-for="TipoPersona" class="form-control" />
                 <span asp-validation-for="TipoPersona" class="text-danger"></span>
             </div>
         </div>
         <div class="row">
             <div class="form-group col">
-                <label asp-for="TipoDocumento" class="control-label"></label>
+                <label asp-for="TipoDocumento" class="control-label">Tipo de Documento</label>
                 <input asp-for="TipoDocumento" class="form-control" />
                 <span asp-validation-for="TipoDocumento" class="text-danger"></span>
             </div>
             <div class="form-group col">
-                <label asp-for="NumDocumento" class="control-label"></label>
+                <label asp-for="NumDocumento" class="control-label">Numero de Documento</label>
                 <input asp-for="NumDocumento" class="form-control" />
                 <span asp-validation-for="NumDocumento" class="text-danger"></span>
             </div>
@@ -42,11 +42,11 @@
         </div>
         <div class="form-group">
             <label asp-for="Telefono" class="control-label"></label>
-            <input asp-for="Telefono" class="form-control" />
+            <input asp-for="Telefono" class="form-control telefono" />
             <span asp-validation-for="Telefono" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Email" class="control-label"></label>
+            <label asp-for="Email" class="control-label">Correo</label>
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
@@ -59,7 +59,7 @@
             </div>
         </div>
     </form>
-    <script src="~/js/proveedor.js"></script>
+    <script src="~/js/personas.js"></script>
     <script>
         function soloLetras(event) {
             var charCode = event.which || event.keyCode;
