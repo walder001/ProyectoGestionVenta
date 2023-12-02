@@ -9,49 +9,49 @@
     <div class="card-header">
         <h3 class="card-title">Detalles de Cliente</h3>
     </div>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoPersona)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TipoPersona)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoDocumento)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TipoDocumento)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NumDocumento)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NumDocumento)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+    <dl class="personas-details row">
+        <div class="col-sm-3">
+            <dt>Nombre:</dt>
+        </div>
+        <div class="col-sm-9">
+            <dd>@Model?.Nombre</dd>
+        </div>
+        <div class="col-sm-3">
+            <dt>Tipo de Persona:</dt>
+        </div>
+        <div class="col-sm-9">
+            <dd>@Model?.TipoPersona</dd>
+        </div>
+        <div class="col-sm-3">
+            <dt>Tipo de Documento:</dt>
+        </div>
+        <div class="col-sm-9">
+            <dd>@Model?.TipoDocumento</dd>
+        </div>
+        <div class="col-sm-3">
+            <dt>Número de Documento:</dt>
+        </div>
+        <div class="col-sm-9">
+            <dd>@Model?.NumDocumento</dd>
+        </div>
+        <div class="col-sm-3">
+            <dt>Dirección:</dt>
+        </div>
+        <div class="col-sm-9">
+            <dd>@Model?.Direccion</dd>
+        </div>
+        <div class="col-sm-3">
+            <dt>Teléfono:</dt>
+        </div>
+        <div class="col-sm-9">
+            <dd>@Model?.Telefono</dd>
+        </div>
+        <div class="col-sm-3">
+            <dt>Correo:</dt>
+        </div>
+        <div class="col-sm-9">
+            <dd>@Model?.Email</dd>
+        </div>
     </dl>
     <nav>
 
